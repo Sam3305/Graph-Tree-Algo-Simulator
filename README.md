@@ -11,11 +11,20 @@ Users can construct graphs interactively and observe how algorithms explore node
 
 ---
 
-# 📱 Demo
+# 📱 App Screenshots
 
-> Add screenshots or GIF demonstrations here
-assets/demo1.gif
-assets/demo2.gif
+## Graph Blueprint Canvas
+![Graph Canvas](screenshots/Ui.jpg)
+
+## BFS Execution Visualization
+![BFS Execution](screenshots/bfs_working.jpg)
+
+## Dijkstra Shortest Path
+![Dijkstra Path](screenshots/dijkstra_complete.jpg)
+
+## A*
+![A* Working](screenshots/Astar_working.jpg)
+
 ---
 
 # ✨ Key Features
