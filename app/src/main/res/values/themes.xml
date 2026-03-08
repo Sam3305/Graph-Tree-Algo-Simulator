@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.GraphTreeAlgoSimulator" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">#355C8A</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@mipmap/ic_launcher_foreground</item>
+    </style>
+
+    <style name="Theme.GraphTreeAlgoSimulator" parent="Base.Theme.GraphTreeAlgoSimulator" />
+</resources>

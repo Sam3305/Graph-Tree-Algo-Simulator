@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background Graph -->
+    <com.example.graphtreealgosimulator.view.GraphView
+        android:id="@+id/graphView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- Directed / Undirected Toggle -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/segmented_control"
+        android:layout_width="283dp"
+        android:layout_height="41dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_segmented_container"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/view_thumb"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_segmented_thumb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tv_directed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="Directed"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tv_undirected"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="136dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="UnDirected"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Algorithm Dropdown -->
+    <LinearLayout
+        android:id="@+id/dropdown_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_dropdown_white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/segmented_control">
+
+        <LinearLayout
+            android:id="@+id/dropdown_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_selected_algorithm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algorithm"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/dropdown_arrow"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/baseline_arrow_drop_down_24"
+                app:tint="#000000" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/dropdown_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/option_astar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-A*"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/option_bfs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-BFS"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/option_bidirectional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-Bidirectional"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/option_dfs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-DFS"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/option_dijkstra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-Dijkstra"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/option_dls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-DLS"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/option_ucs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="-UCS"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Play Button -->
+    <ImageButton
+        android:id="@+id/btn_play_algorithm"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/play_button"
+        android:elevation="4dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_terminal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#FFFFFF" />
+
+    <!-- Undo Button -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sidebar_tools">
+
+        <ImageButton
+            android:id="@+id/btn_clear_grid"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="0px"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_can" />
+
+    </androidx.cardview.widget.CardView>
+    <!-- Left Sidebar -->
+    <LinearLayout
+        android:id="@+id/sidebar_tools"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_panel_blue"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_terminal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/segmented_control"
+        app:layout_constraintVertical_bias="0.4">
+
+        <TextView
+            android:id="@+id/tool_node"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_circle_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="node"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/tool_edge"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/edge_icon" />
+        <TextView
+            android:id="@+id/tool_start_node"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_circle_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Start"
+            android:textColor="#2196F3"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tool_goal_node"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_circle_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Goal"
+            android:textColor="#F44336"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/tool_eraser"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/eraser_icon"
+            android:scaleType="fitCenter"
+            android:scaleX="1.8"
+            android:scaleY="1.8" />
+    </LinearLayout>
+
+    <!-- Bottom Output Terminal -->
+    <LinearLayout
+        android:id="@+id/bottom_terminal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true" android:background="#3671b6"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <SeekBar
+            android:id="@+id/timeline_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:progressTint="#2196F3"
+            android:thumbTint="#2196F3"
+            android:visibility="gone" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp">
+
+            <TextView
+                android:id="@+id/tv_terminal_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:clickable="true"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="4dp"
+                android:text="Terminal"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_terminal_expand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="&lt;/&gt;"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/terminal_animation_area"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_algo_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Waiting for algorithm..."
+                android:textAlignment="center"
+                android:textColor="#BBDEFB"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_queue_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="🚶"
+                    android:textSize="40sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:id="@+id/queue_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:animateLayoutChanges="true"
+                        android:background="@drawable/bg_queue_container"
+                        android:divider="@drawable/divider_black"
+                        android:showDividers="middle"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_stack_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ScrollView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:id="@+id/stack_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true"
+                        android:background="@drawable/bg_stack_container"
+                        android:divider="@drawable/divider_black"
+                        android:showDividers="middle"
+                        android:gravity="bottom"
+                        android:orientation="vertical" />
+                </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
